@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class controller : MonoBehaviour {
+public class Controller2 : MonoBehaviour {
     public GameObject  game;
     public TextMeshProUGUI gameHitCountOut;
     public TextMeshProUGUI letterOut;
@@ -18,17 +18,14 @@ public class controller : MonoBehaviour {
 
     private Sign targetSign;
 
-    public void ChooseHand() {
-        // if ( targetSign != null ) { Destroy(targetSign.hand); }
-        targetSign = State.data.signs[Random.Range(0, State.data.signs.Length)].Clone();
-        // , new Vector3(0, 0, 0)
-        // targetSign.hand = Instantiate(targetSign.hand, game.transform);
+    public void ChooseSign() {
+        targetSign = State.data.signs[hitCount];
         imageOut.sprite = targetSign.sprite;
         letterOut.text  = targetSign.text.ToString();
     }
 
     void Start() {
-        ChooseHand();
+        ChooseSign();
     }
 
     void Update() {
@@ -41,7 +38,11 @@ public class controller : MonoBehaviour {
 
             if ( targetSign.text.ToLower() == ch.ToString() ) {
                 hitCount++;
-                ChooseHand();
+                if ( hitCount < State.data.signs.Length ) {
+                    ChooseSign();
+                } else {
+                    ShowResults();
+                }
             }
         }    
 
@@ -55,6 +56,7 @@ public class controller : MonoBehaviour {
         results.SetActive(false);
 
         hitCount = 0;
+        ChooseSign();
     }
 
     public void ShowResults() {
