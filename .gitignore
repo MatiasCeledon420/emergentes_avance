@@ -1,0 +1,26 @@
+# Unity generated files
+[Ll]ibrary/
+[Tt]emp/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+UserSettings/
+MemoryCaptures/
+
+# Visual Studio / JetBrains Rider
+.vscode/
+*.csproj
+*.sln
+*.user
+*.unityproj
+
+# OS generated
+.DS_Store
+Thumbs.db
+
+# Crash logs
+sysinfo.txt
+
+# Cache
+*.apk
+*.aab
